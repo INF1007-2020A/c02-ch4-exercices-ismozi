@@ -4,23 +4,51 @@
 import random
 
 def is_even_len(string):
-	return 0xDEADBEEF
+	
+	
+
+	return len(string)%2 == 0
 
 
 def get_num_char(string, char):
-	return 0xDEADBABE
+	compteurChar=0
+	for chars in string:
+		if char==chars:
+			compteurChar+=1
+
+	return compteurChar
 
 
 def get_first_part_of_name(name):
-	return ""
+	premierNom=''
+	
+	for char in name:
+		if char != '-':
+			premierNom+=char
+		else:
+			break
+	
+	capitalized = 'Bonjour, '+premierNom.capitalize()
+
+	return capitalized
 
 
 def get_random_sentence(animals, adjectives, fruits):
-	return ""
+
+
+	words = []
+
+	for word_set in (animals, adjectives, fruits):
+		words += [word_set[random.randrange(len(word_set))]]
+
+	phrase = 'Aujourd’hui, j’ai vu un '+ words[0]+' s’emparer d’un panier '+ words[1] +' plein de '+words[2]+'.'
+
+
+	return phrase
 
 
 if __name__ == "__main__":
-	spam = "Bonjour!"
+	spam = "Bonjour"
 	parity = "pair" if is_even_len(spam) else "impair"
 	print(f"Le nombre de caractère dans la chaine '{spam}' est {parity}.")
 
